@@ -1,63 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.Pane?>
 
-<StackPane prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="com.softtek.medicine.java.controller.MainController">
-  <padding>
-    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-  </padding>
-   <children>
-      <TabPane prefHeight="549.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="Incidents">
-               <content>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                     <children>
-                        <SplitPane dividerPositions="0.1894353369763206" layoutX="6.0" layoutY="8.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <items>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                                 <children>
-                                    <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <content>
-                                          <TableView fx:id="Incident" prefHeight="442.0" prefWidth="778.0">
-                                            <columns>
-                                                <TableColumn fx:id="status" prefWidth="89.0" text="Status" />
-                                                <TableColumn fx:id="createDate" prefWidth="87.0" text="Create Date" />
-                                                <TableColumn fx:id="priority" prefWidth="81.0" text="Priority" />
-                                                <TableColumn fx:id="incidentNumber" prefWidth="75.0" text="Incident" />
-                                                <TableColumn fx:id="description" prefWidth="323.0" text="Description" />
-                                            </columns>
-                                          </TableView>
-                                       </content>
-                                    </ScrollPane>
-                                 </children>
-                              </AnchorPane>
-                          </items>
-                        </SplitPane>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-          <Tab text="Reports">
-               <content>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-               </content>
-            </Tab>
-            <Tab text="FUP">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
-            </Tab>
-        </tabs>
-      </TabPane>
-   </children>
-</StackPane>
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.softtek.medicine.java.controller.IncidentsController">
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
+    <children>
+        <SplitPane dividerPositions="0.1894353369763206" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <children>
+                        <Pane prefHeight="106.0" prefWidth="778.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <Label layoutX="14.0" layoutY="14.0" text="Filtros" />
+                            </children>
+                        </Pane>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <children>
+                        <ScrollPane prefHeight="466.0" prefWidth="778.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <content>
+                                <TableView fx:id="IncidentTableView" prefHeight="442.0" prefWidth="778.0"  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <columns>
+                                        <TableColumn fx:id="statusCol" prefWidth="89.0" text="Status" />
+                                        <TableColumn fx:id="submitDateCol" prefWidth="87.0" text="Submit Date" />
+                                        <TableColumn fx:id="priorityCol" prefWidth="81.0" text="Priority" />
+                                        <TableColumn fx:id="incidentNumberCol" prefWidth="75.0" text="Incident" />
+                                        <TableColumn fx:id="descriptionCol" prefWidth="323.0" text="Description" />
+                                    </columns>
+                                </TableView>
+                            </content>
+                        </ScrollPane>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

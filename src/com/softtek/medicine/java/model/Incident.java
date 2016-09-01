@@ -1,5 +1,7 @@
 package com.softtek.medicine.java.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -23,8 +25,8 @@ public class Incident implements Serializable {
     private String firstName; // 1000000019
     private String lastName; // 1000000018
     private String description; // 1000000000
-    private String ProductCategorizationTier1; // 200000003
-    private String ProductCategorizationTier2; // 200000004
+    private String productCategorizationTier1; // 200000003
+    private String productCategorizationTier2; // 200000004
     private String productCategorizationTier3; // 200000005
     /* mandatory fields */
 
@@ -137,19 +139,19 @@ public class Incident implements Serializable {
     }
 
     public String getProductCategorizationTier1() {
-        return ProductCategorizationTier1;
+        return productCategorizationTier1;
     }
 
     public void setProductCategorizationTier1(String productCategorizationTier1) {
-        ProductCategorizationTier1 = productCategorizationTier1;
+        this.productCategorizationTier1 = productCategorizationTier1;
     }
 
     public String getProductCategorizationTier2() {
-        return ProductCategorizationTier2;
+        return productCategorizationTier2;
     }
 
     public void setProductCategorizationTier2(String productCategorizationTier2) {
-        ProductCategorizationTier2 = productCategorizationTier2;
+        this.productCategorizationTier2 = productCategorizationTier2;
     }
 
     public String getProductCategorizationTier3() {
@@ -175,7 +177,8 @@ public class Incident implements Serializable {
     public void setSubmitter(String submitter) {
         this.submitter = submitter;
     }
-
+    
+    @JsonSerialize(using=DateSerializer.class)
     public Date getSubmitDate() {
         return submitDate;
     }
@@ -200,6 +203,7 @@ public class Incident implements Serializable {
         this.lastModifiedBy = lastModifiedBy;
     }
 
+    @JsonSerialize(using=DateSerializer.class)
     public Date getLastModifiedDate() {
         return lastModifiedDate;
     }
@@ -252,8 +256,8 @@ public class Incident implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((ProductCategorizationTier1 == null) ? 0 : ProductCategorizationTier1.hashCode());
-        result = prime * result + ((ProductCategorizationTier2 == null) ? 0 : ProductCategorizationTier2.hashCode());
+        result = prime * result + ((productCategorizationTier1 == null) ? 0 : productCategorizationTier1.hashCode());
+        result = prime * result + ((productCategorizationTier2 == null) ? 0 : productCategorizationTier2.hashCode());
         result = prime * result + ((categorizationTier1 == null) ? 0 : categorizationTier1.hashCode());
         result = prime * result + ((categorizationTier2 == null) ? 0 : categorizationTier2.hashCode());
         result = prime * result + ((company == null) ? 0 : company.hashCode());
@@ -293,18 +297,18 @@ public class Incident implements Serializable {
             return false;
         }
         Incident other = (Incident) obj;
-        if (ProductCategorizationTier1 == null) {
-            if (other.ProductCategorizationTier1 != null) {
+        if (productCategorizationTier1 == null) {
+            if (other.productCategorizationTier1 != null) {
                 return false;
             }
-        } else if (!ProductCategorizationTier1.equals(other.ProductCategorizationTier1)) {
+        } else if (!productCategorizationTier1.equals(other.productCategorizationTier1)) {
             return false;
         }
-        if (ProductCategorizationTier2 == null) {
-            if (other.ProductCategorizationTier2 != null) {
+        if (productCategorizationTier2 == null) {
+            if (other.productCategorizationTier2 != null) {
                 return false;
             }
-        } else if (!ProductCategorizationTier2.equals(other.ProductCategorizationTier2)) {
+        } else if (!productCategorizationTier2.equals(other.productCategorizationTier2)) {
             return false;
         }
         if (categorizationTier1 == null) {
@@ -484,8 +488,8 @@ public class Incident implements Serializable {
                 + ", urgency=" + urgency + ", serviceType=" + serviceType + ", contactCompany=" + contactCompany
                 + ", categorizationTier1=" + categorizationTier1 + ", categorizationTier2=" + categorizationTier2
                 + ", phoneNumber=" + phoneNumber + ", firstName=" + firstName + ", lastName=" + lastName
-                + ", description=" + description + ", ProductCategorizationTier1=" + ProductCategorizationTier1
-                + ", ProductCategorizationTier2=" + ProductCategorizationTier2 + ", productCategorizationTier3="
+                + ", description=" + description + ", productCategorizationTier1=" + productCategorizationTier1
+                + ", productCategorizationTier2=" + productCategorizationTier2 + ", productCategorizationTier3="
                 + productCategorizationTier3 + ", entryId=" + entryId + ", submitter=" + submitter + ", submitDate="
                 + submitDate + ", template=" + template + ", lastModifiedBy=" + lastModifiedBy + ", lastModifiedDate="
                 + lastModifiedDate + ", status=" + status + ", createdBy=" + createdBy + ", customer=" + customer

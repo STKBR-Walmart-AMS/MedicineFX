@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.MenuBar?>
+
+<MenuBar 
+    xmlns="http://javafx.com/javafx/8.0.40"
+    xmlns:fx="http://javafx.com/fxml/1" 
+    fx:controller="com.softtek.medicine.java.controller.MenuController">
+    <menus>
+        <Menu mnemonicParsing="false" text="File">
+            <items>
+                <MenuItem fx:id="menuIndex" mnemonicParsing="false" onAction="#indexAction" text="Main" />
+                <MenuItem fx:id="menuItemQuit" mnemonicParsing="false" onAction="#quitAction" text="Quit" />
+            </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Incidents">
+            <items>
+                <MenuItem fx:id="menuItemIncidentManagement" mnemonicParsing="false" onAction="#incidentManagementAction" text="Management" />
+                <MenuItem fx:id="menuItemIncidentReports" mnemonicParsing="false" text="Reports" />
+            </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="FUP">
+            <items>
+                <MenuItem mnemonicParsing="false" text="Auto FUP Management" />
+                <MenuItem mnemonicParsing="false" text="Reports" />
+            </items>
+        </Menu>
+        <Menu disable="true" mnemonicParsing="false" text="Customer">
+            <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+            </items>
+        </Menu>
+        <Menu disable="true" mnemonicParsing="false" text="Team Members">
+            <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+            </items>
+        </Menu> 
+    </menus>
+</MenuBar>
