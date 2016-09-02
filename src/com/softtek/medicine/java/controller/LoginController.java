@@ -3,9 +3,12 @@ package com.softtek.medicine.java.controller;
 import com.softtek.medicine.java.model.Incident;
 import com.softtek.medicine.java.util.LoginManager;
 import com.softtek.medicine.java.util.MedicineUtil;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -37,7 +40,11 @@ public class LoginController {
             public void handle(ActionEvent event) {
                 String sessionID = authorize();
                 if (sessionID != null) {
-                    loginManager.authenticated(sessionID);
+                    try {
+                        loginManager.authenticated(sessionID);
+                    } catch (IOException ex) {
+                        Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
         });
@@ -60,10 +67,10 @@ public class LoginController {
 
         MedicineUtil util = new MedicineUtil();
         List<Incident> incidentList = new ArrayList<>();
-        incidentList = util.recoverInidents(user.getText(), password.getText(), null);
+        incidentList = util.recoverIncidents(user.getText(), password.getText(), null);
         if (!incidentList.isEmpty()) {
             RestTemplate restTemplate = new RestTemplate();
-            System.out.println("recover incidents\n");
+            //System.out.println("recover incidents\n");
             String result = restTemplate.postForObject(SERVER_URI + "/dr/incidents/update", incidentList, String.class);
             System.out.println(result);
         }

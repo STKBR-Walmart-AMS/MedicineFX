@@ -34,7 +34,7 @@ public class MedicineUtil {
     private String formName = "HPD:Help Desk";
     private String groupName = "BRL - Maintenance Softtek BR HD";
 
-    public final List<Incident> recoverInidents(String user, String pass, String submitDate) {
+    public final List<Incident> recoverIncidents(String user, String pass, String submitDate) {
 
         List<Incident> incidentList = new ArrayList<>();
         if (null == submitDate || submitDate.equals("")) {

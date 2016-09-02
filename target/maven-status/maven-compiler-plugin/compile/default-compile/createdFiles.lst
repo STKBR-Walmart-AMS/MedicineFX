@@ -9,4 +9,5 @@ com\softtek\medicine\java\controller\LoginController$1.class
 com\softtek\medicine\java\controller\MenuController.class
 com\softtek\medicine\java\controller\MainController$1.class
 com\softtek\medicine\java\util\TestRestClient.class
+com\softtek\medicine\java\MainLogin.class
 com\softtek\medicine\java\util\LoginManager.class
