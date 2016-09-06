@@ -5,7 +5,6 @@ import com.softtek.medicine.java.util.LoginManager;
 import com.softtek.medicine.java.util.MedicineUtil;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,6 +14,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -30,7 +30,12 @@ public class LoginController {
     private Button loginButton;
     
     public static final String SERVER_URI = "http://medicineweb-stkbr.rhcloud.com/";
-
+    
+    @Bean
+    public RestTemplate restTemplate(){
+        return new RestTemplate();
+    } 
+    
     public void initialize() {
     }
 
@@ -61,21 +66,29 @@ public class LoginController {
 //        if (MedicineUtil.statusServer()) {
 //            System.out.println("chamou a bagaça toda");
 //        }
-        RestTemplate restTemplateTest = new RestTemplate();
-        List<LinkedHashMap> emps = restTemplateTest.getForObject(SERVER_URI + "/dr/incidents/request", List.class);
-        System.out.println(emps.size());
+       // RestTemplate restTemplateTest = new RestTemplate();
+       
+       if(MedicineUtil.statusServer()){
+                   System.out.println("statusServer OK");
+       }else{
+                System.out.println("statusServer - deu ruim!");
+       }
+       
+//       String emps = restTemplate().getForObject(SERVER_URI + "dr/incident".trim(), String.class);
+                //restTemplateTest.getForObject(SERVER_URI + "dr/incident".trim(), String.class);
+
 
         MedicineUtil util = new MedicineUtil();
         List<Incident> incidentList = new ArrayList<>();
         incidentList = util.recoverIncidents(user.getText(), password.getText(), null);
         if (!incidentList.isEmpty()) {
-            RestTemplate restTemplate = new RestTemplate();
+            
             //System.out.println("recover incidents\n");
-            String result = restTemplate.postForObject(SERVER_URI + "/dr/incidents/update", incidentList, String.class);
+            String result = restTemplate().postForObject(SERVER_URI + "dr/incidents/update".trim(), incidentList, String.class);
             System.out.println(result);
         }
   
-        return "open".equals(user.getText()) && "sesame".equals(password.getText()) ? generateSessionID() : null;
+        return generateSessionID();
     }
 
     private static int sessionID = 0;

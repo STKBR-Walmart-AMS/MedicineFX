@@ -15,9 +15,16 @@ import com.bmc.arsys.api.SortInfo;
 import com.bmc.arsys.api.StatusInfo;
 import com.bmc.arsys.api.Value;
 import com.softtek.medicine.java.model.Incident;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.springframework.web.client.RestTemplate;
 
 public class MedicineUtil {
@@ -233,10 +240,40 @@ public class MedicineUtil {
         }
     }
 
+//    public static boolean statusServer() {
+//        RestTemplate restTemplateTest = new RestTemplate();
+//        String resp = restTemplateTest.getForObject(SERVER_URI + "dr/incident", String.class);
+//        return false;
+//    }
     public static boolean statusServer() {
-        RestTemplate restTemplateTest = new RestTemplate();
-        String resp = restTemplateTest.getForObject(SERVER_URI + "/dr/incident", String.class);
-        return false;
+        try {
+
+            DefaultHttpClient httpClient = new DefaultHttpClient();
+            HttpGet getRequest = new HttpGet("http://medicineweb-stkbr.rhcloud.com/dr/incident");
+          //  getRequest.addHeader("accept", "application/json");
+
+            HttpResponse response = httpClient.execute(getRequest);
+
+            if (response.getStatusLine().getStatusCode() != 200) {
+                return false;
+
+            }
+
+            BufferedReader br = new BufferedReader(
+                    new InputStreamReader((response.getEntity().getContent())));
+
+            String output;
+
+        } catch (ClientProtocolException e) {
+            System.out.println(e.getMessage());
+//e.printStackTrace();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
+        return true;
+
     }
 
 }

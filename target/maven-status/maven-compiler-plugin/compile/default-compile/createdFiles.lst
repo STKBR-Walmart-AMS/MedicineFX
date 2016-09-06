@@ -1,4 +1,3 @@
-com\softtek\medicine\java\Main.class
 com\softtek\medicine\java\util\MedicineUtil.class
 com\softtek\medicine\java\controller\IncidentsController.class
 com\softtek\medicine\java\util\MedicineRestClientUtil.class

@@ -8,7 +8,8 @@ package com.softtek.medicine.java.controller;
 /**
  * Sample Skeleton for 'MyMenus.fxml' Controller Class
  */
-import com.softtek.medicine.java.Main;
+//import com.softtek.medicine.java.Main;
+import com.softtek.medicine.java.MainLogin;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -54,7 +55,7 @@ public class MenuController {
             URL paneTwoUrl = getClass().getClassLoader().getResource("com/softtek/medicine/resources/fxml/Index.fxml");
             AnchorPane paneTwo = FXMLLoader.load(paneTwoUrl);
 
-            BorderPane border = Main.getRoot();
+            BorderPane border = MainLogin.getRoot();
             border.setCenter(paneTwo);
 
         } catch (IOException e) {
@@ -75,7 +76,7 @@ public class MenuController {
             URL incidentsUrl = getClass().getClassLoader().getResource("com/softtek/medicine/resources/fxml/Incidents.fxml");
             AnchorPane incidents = FXMLLoader.load(incidentsUrl);
 
-            BorderPane border = Main.getRoot();
+            BorderPane border = MainLogin.getRoot();
             border.setCenter(incidents);
 
         } catch (IOException e) {
